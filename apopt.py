@@ -91,7 +91,7 @@ def aps_ip(server):
         ip = fip.decode().strip()
     return ip
 
-def aps_sol(server,app):
+def aps_sol(server,app,stub):
     '''Retrieve solution results\n \
        server   = address of server \n \
        app      = application name '''
@@ -111,7 +111,7 @@ def aps_sol(server,app):
     solution = f.read()    # Write the file
 
     # Write the file
-    sol_file = app + '.sol'
+    sol_file = stub + '.sol'
     fh = open(sol_file,'w')
 
     # possible problem here if file isn't able to open
@@ -142,7 +142,7 @@ def aps_option(server,app,name,value):
 #print('Argument list:', str(sys.argv))
 
 stub = ''
-retrieve_solution = False
+retrieve_solution = True 
 for i in range(1,len(sys.argv)):
     arg = sys.argv[i]
     if (arg[0]=='-'):
@@ -212,13 +212,13 @@ for i in range(1,len(sys.argv)):
 if (len(stub)>=1):
     # server and application name
     s = 'http://byu.apopt.com'
-    a = stub
+    a = ''.join(e for e in stub if e.isalnum())
 
     # clear prior application
     aps(s,a,'clear all')
 
     # load nl file
-    nl_load(s,a,a+'.nl')
+    nl_load(s,a,stub+'.nl')
 
     # adjustable solver options
     aps_option(s,a,'minlp_maximum_iterations',10000)
@@ -240,4 +240,4 @@ if (len(stub)>=1):
 
     # retrieve solution (sol) file
     if retrieve_solution:
-        aps_sol(s,a)
+        aps_sol(s,a,stub)
