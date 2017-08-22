@@ -240,7 +240,7 @@ for i in range(1,len(sys.argv)):
 
 if (len(stub)>=1):
     # server and application name
-    s = 'http://byu.apopt.com'
+    s = 'https://hpc.apopt.com'
     a = ''.join(e for e in stub if e.isalnum())
 
     # clear prior application
