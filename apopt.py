@@ -6,7 +6,7 @@ APOPT Online Solver for Mixed Integer Nonlinear Programming
  solvers, this script reads the model (NL) file and produces a solution (sol) file.
  It sends the NL file to a remote server, computes a solution (remotely), and 
  retrieves a solution (sol) file through an internet connection. It communicates
- with the server http://byu.apopt.com that is hosting the APOPT solver. Contact
+ with the server https://byu.apopt.com that is hosting the APOPT solver. Contact
  support@apmonitor.com for support, especially if there is a feature request or a 
  concern about a problem solution.
 
@@ -240,7 +240,7 @@ for i in range(1,len(sys.argv)):
 
 if (len(stub)>=1):
     # server and application name
-    s = 'https://hpc.apopt.com'
+    s = 'https://byu.apopt.com'
     a = ''.join(e for e in stub if e.isalnum())
 
     # clear prior application
