@@ -240,7 +240,8 @@ for i in range(1,len(sys.argv)):
 
 if (len(stub)>=1):
     # server and application name
-    s = 'https://byu.apopt.com'
+    # can use https if needed
+    s = 'http://byu.apopt.com'
     a = ''.join(e for e in stub if e.isalnum())
 
     # clear prior application
@@ -270,3 +271,6 @@ if (len(stub)>=1):
     # retrieve solution (sol) file
     if retrieve_solution:
         aps_sol(s,a,stub)
+
+    # clear solution folder
+    output = aps(s,a,'clear all')
